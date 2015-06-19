@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+var xmlhttp = new XMLHttpRequest();
+var url = "http://json-generator.appspot.com/api/json/get/bMGRMYBGEO?indent=2";
+
+xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var myArr = JSON.parse(xmlhttp.responseText);
+	   document.getElementById("btn").onclick = function() {myFunction(myArr)};
+    }
+}
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function myFunction(arr) {
+    var result = "";
+    var i;
+	 
+    for(i = 0; i < arr.length; i++) {
+        result += "<h1>Person "+ i + "</h1><table><tr><td>Id:</td><td>"+arr[i]._id+"</td></tr><tr><td>Name:</td><td>"+arr[i].name+"</td></tr><tr><td>Age:</td><td>"+arr[i].age+"</td></tr><tr><td>Gender:</td><td>"+arr[i].gender+"</td></tr><tr><td>Picture:</td><td><img src="+arr[i].picture+"/></td></tr><tr><td>Company:</td><td>"+arr[i].company+"</td></tr><tr><td>Email:</td><td>"+arr[i].email+"</td></tr><tr><td>Phone :</td><td>"+arr[i].phone+"</td></tr><tr><td>Address:</td><td>"+arr[i].address+"</td></tr><tr><td>About:</td><td>"+arr[i].about+"</td></tr><tr><td>Latitude:</td><td>"+arr[i].latitude+"</td></tr><tr><td>Longitude:</td><td>"+arr[i].longitude+"</td></tr><tr><td>Balance:</td><td>"+arr[i].balance+"</td></tr><tr><td>Greeting :</td><td>"+arr[i].greeting+"</td></tr><tr><td>Fav Fruit :</td><td>"+arr[i].favoriteFruit+"</td></tr><tr><td>guid:</td><td>"+arr[i].guid+"</td></tr><tr><td>Registered:</td><td>"+arr[i].registered+"</td></tr><tr><td>Active ?:</td><td>"+arr[i].isActive+"</td></tr><tr><td>Eye Color::</td><td>"+arr[i].eyeColor+"</td></tr><tr><td>Index:</td><td>"+arr[i].index+"</td></tr><tr><td>Tags:</td><td>"+arr[i].tags+"</td></tr></table><br><hr><br>"
+		
+    }
+	
+    document.getElementById("showResult").innerHTML = result;
+}
+</script>
+<button type="button" id="btn">Parse Text </button>
+<div id="showResult"></div>
+
+</body>
+
+</html>
